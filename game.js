@@ -160,7 +160,16 @@ class Game {
     }
     
     createBackgroundMusic() {
-        // Mélodie principale inspirée de Super Mario (simplifiée)
+        // Musique par défaut (forêt)
+        this.createThemeMusic();
+    }
+    
+    createThemeMusic() {
+        const levelInfo = this.levelData[this.level];
+        const theme = levelInfo ? levelInfo.theme : 'forest';
+        
+        if (theme === 'forest') {
+            // Musique de forêt (douce et naturelle)
         this.music.melody = [
             {freq: 523.25, duration: 0.25}, // C5
             {freq: 523.25, duration: 0.25}, // C5
@@ -170,67 +179,116 @@ class Game {
             {freq: 392.00, duration: 0.25}, // G4
             {freq: 523.25, duration: 0.5},  // C5
             {freq: 0, duration: 0.25},      // Pause
-            
-            {freq: 659.25, duration: 0.5},  // E5
-            {freq: 0, duration: 0.25},      // Pause
-            {freq: 659.25, duration: 0.25}, // E5
-            {freq: 0, duration: 0.25},      // Pause
-            {freq: 659.25, duration: 0.25}, // E5
-            {freq: 0, duration: 0.25},      // Pause
-            {freq: 659.25, duration: 0.5},  // E5
-            {freq: 0, duration: 0.25},      // Pause
-            
-            {freq: 523.25, duration: 0.5},  // C5
-            {freq: 0, duration: 0.25},      // Pause
-            {freq: 523.25, duration: 0.25}, // C5
-            {freq: 0, duration: 0.25},      // Pause
-            {freq: 523.25, duration: 0.25}, // C5
-            {freq: 0, duration: 0.25},      // Pause
-            {freq: 523.25, duration: 0.5},  // C5
-            {freq: 0, duration: 0.25},      // Pause
-            
-            {freq: 392.00, duration: 0.5},  // G4
-            {freq: 0, duration: 0.25},      // Pause
-            {freq: 392.00, duration: 0.25}, // G4
-            {freq: 0, duration: 0.25},      // Pause
-            {freq: 392.00, duration: 0.25}, // G4
-            {freq: 0, duration: 0.25},      // Pause
-            {freq: 392.00, duration: 0.5},  // G4
-            {freq: 0, duration: 0.5}        // Pause longue
-        ];
-        
-        // Ligne de basse
+            ];
         this.music.bass = [
             {freq: 130.81, duration: 0.5},  // C3
             {freq: 0, duration: 0.5},       // Pause
             {freq: 130.81, duration: 0.5},  // C3
             {freq: 0, duration: 0.5},       // Pause
-            {freq: 130.81, duration: 0.5},  // C3
-            {freq: 0, duration: 0.5},       // Pause
-            {freq: 130.81, duration: 0.5},  // C3
-            {freq: 0, duration: 0.5},       // Pause
-            
-            {freq: 146.83, duration: 0.5},  // D3
-            {freq: 0, duration: 0.5},       // Pause
-            {freq: 146.83, duration: 0.5},  // D3
-            {freq: 0, duration: 0.5},       // Pause
-            {freq: 146.83, duration: 0.5},  // D3
-            {freq: 0, duration: 0.5},       // Pause
-            {freq: 146.83, duration: 0.5},  // D3
-            {freq: 0, duration: 0.5}        // Pause
-        ];
-        
-        // Rythme de percussion (simulé avec des bips)
+            ];
         this.music.rhythm = [
             {freq: 200, duration: 0.125},   // Kick
             {freq: 0, duration: 0.125},     // Pause
             {freq: 400, duration: 0.125},   // Snare
             {freq: 0, duration: 0.125},     // Pause
-            {freq: 200, duration: 0.125},   // Kick
-            {freq: 0, duration: 0.125},     // Pause
-            {freq: 400, duration: 0.125},   // Snare
-            {freq: 0, duration: 0.125}      // Pause
-        ];
+            ];
+        } else if (theme === 'ice') {
+            // Musique de glace (cristalline)
+            this.music.melody = [
+                {freq: 1046.50, duration: 0.2}, // C6
+                {freq: 1174.66, duration: 0.2}, // D6
+                {freq: 1318.51, duration: 0.2}, // E6
+                {freq: 0, duration: 0.2},       // Pause
+                {freq: 1046.50, duration: 0.2}, // C6
+                {freq: 1174.66, duration: 0.2}, // D6
+                {freq: 1318.51, duration: 0.4}, // E6
+                {freq: 0, duration: 0.2},       // Pause
+            ];
+            this.music.bass = [
+                {freq: 261.63, duration: 0.4},  // C4
+                {freq: 0, duration: 0.4},       // Pause
+                {freq: 261.63, duration: 0.4},  // C4
+                {freq: 0, duration: 0.4},       // Pause
+            ];
+            this.music.rhythm = [
+                {freq: 800, duration: 0.1},     // Cloche
+                {freq: 0, duration: 0.1},       // Pause
+                {freq: 1000, duration: 0.1},    // Cloche aiguë
+                {freq: 0, duration: 0.1},       // Pause
+            ];
+        } else if (theme === 'beach') {
+            // Musique de plage (joyeuse)
+            this.music.melody = [
+                {freq: 659.25, duration: 0.2},  // E5
+                {freq: 659.25, duration: 0.2},  // E5
+                {freq: 523.25, duration: 0.2},  // C5
+                {freq: 659.25, duration: 0.2},  // E5
+                {freq: 783.99, duration: 0.2},  // G5
+                {freq: 659.25, duration: 0.2},  // E5
+                {freq: 523.25, duration: 0.4},  // C5
+                {freq: 0, duration: 0.2},       // Pause
+            ];
+            this.music.bass = [
+                {freq: 196.00, duration: 0.3},  // G3
+                {freq: 0, duration: 0.1},       // Pause
+                {freq: 196.00, duration: 0.3},  // G3
+                {freq: 0, duration: 0.1},       // Pause
+            ];
+            this.music.rhythm = [
+                {freq: 300, duration: 0.1},     // Percussion légère
+                {freq: 0, duration: 0.1},       // Pause
+                {freq: 500, duration: 0.1},     // Percussion
+                {freq: 0, duration: 0.1},       // Pause
+            ];
+        } else if (theme === 'fire') {
+            // Musique de feu (intense)
+            this.music.melody = [
+                {freq: 440.00, duration: 0.15}, // A4
+                {freq: 0, duration: 0.05},      // Pause
+                {freq: 440.00, duration: 0.15}, // A4
+                {freq: 0, duration: 0.05},      // Pause
+                {freq: 554.37, duration: 0.15}, // C#5
+                {freq: 0, duration: 0.05},      // Pause
+                {freq: 440.00, duration: 0.15}, // A4
+                {freq: 0, duration: 0.05},      // Pause
+            ];
+            this.music.bass = [
+                {freq: 110.00, duration: 0.2},  // A2
+                {freq: 0, duration: 0.2},       // Pause
+                {freq: 110.00, duration: 0.2},  // A2
+                {freq: 0, duration: 0.2},       // Pause
+            ];
+            this.music.rhythm = [
+                {freq: 150, duration: 0.08},    // Kick lourd
+                {freq: 0, duration: 0.08},      // Pause
+                {freq: 300, duration: 0.08},    // Snare
+                {freq: 0, duration: 0.08},      // Pause
+            ];
+        } else if (theme === 'water') {
+            // Musique d'eau (fluide)
+            this.music.melody = [
+                {freq: 392.00, duration: 0.3},  // G4
+                {freq: 440.00, duration: 0.3},  // A4
+                {freq: 493.88, duration: 0.3},  // B4
+                {freq: 523.25, duration: 0.3},  // C5
+                {freq: 493.88, duration: 0.3},  // B4
+                {freq: 440.00, duration: 0.3},  // A4
+                {freq: 392.00, duration: 0.6},  // G4
+                {freq: 0, duration: 0.3},       // Pause
+            ];
+            this.music.bass = [
+                {freq: 98.00, duration: 0.6},   // G2
+                {freq: 0, duration: 0.6},       // Pause
+                {freq: 98.00, duration: 0.6},   // G2
+                {freq: 0, duration: 0.6},       // Pause
+            ];
+            this.music.rhythm = [
+                {freq: 600, duration: 0.15},    // Bulles
+                {freq: 0, duration: 0.15},      // Pause
+                {freq: 800, duration: 0.15},    // Bulles aiguës
+                {freq: 0, duration: 0.15},      // Pause
+            ];
+        }
     }
     
     playSound(soundName) {
@@ -370,11 +428,61 @@ class Game {
     
     createLevelData() {
         return {
-            1: { name: "Plaine Verte", difficulty: 1, enemyCount: 0.1, collectibleCount: 0.6 },
-            2: { name: "Collines", difficulty: 1.5, enemyCount: 0.15, collectibleCount: 0.5 },
-            3: { name: "Montagnes", difficulty: 2, enemyCount: 0.2, collectibleCount: 0.4 },
-            4: { name: "Canyon", difficulty: 2.5, enemyCount: 0.25, collectibleCount: 0.3 },
-            5: { name: "Volcan", difficulty: 3, enemyCount: 0.3, collectibleCount: 0.2 }
+            1: { 
+                name: "Forêt Enchantée", 
+                theme: "forest",
+                difficulty: 1, 
+                enemyCount: 0.1, 
+                collectibleCount: 0.6,
+                skyColor: '#87CEEB',
+                groundColor: '#228B22',
+                platformColor: '#8B4513',
+                decorationColor: '#32CD32'
+            },
+            2: { 
+                name: "Glacier Gelé", 
+                theme: "ice",
+                difficulty: 1.5, 
+                enemyCount: 0.15, 
+                collectibleCount: 0.5,
+                skyColor: '#B0E0E6',
+                groundColor: '#F0F8FF',
+                platformColor: '#E6F3FF',
+                decorationColor: '#87CEEB'
+            },
+            3: { 
+                name: "Plage Tropicale", 
+                theme: "beach",
+                difficulty: 2, 
+                enemyCount: 0.2, 
+                collectibleCount: 0.4,
+                skyColor: '#87CEEB',
+                groundColor: '#F4A460',
+                platformColor: '#DEB887',
+                decorationColor: '#FFD700'
+            },
+            4: { 
+                name: "Volcan Enflammé", 
+                theme: "fire",
+                difficulty: 2.5, 
+                enemyCount: 0.25, 
+                collectibleCount: 0.3,
+                skyColor: '#FF4500',
+                groundColor: '#8B0000',
+                platformColor: '#A0522D',
+                decorationColor: '#FF6347'
+            },
+            5: { 
+                name: "Océan Profond", 
+                theme: "water",
+                difficulty: 3, 
+                enemyCount: 0.3, 
+                collectibleCount: 0.2,
+                skyColor: '#191970',
+                groundColor: '#000080',
+                platformColor: '#4682B4',
+                decorationColor: '#00CED1'
+            }
         };
     }
     
@@ -398,11 +506,17 @@ class Game {
                 description: "Le gardien des émeraudes",
                 render: this.renderKnuckles
             },
-            octonaut: {
-                name: "Octonaut",
-                color: '#FF69B4',
-                description: "L'explorateur sous-marin",
-                render: this.renderOctonaut
+            captain_barnacles: {
+                name: "Captain Barnacles",
+                color: '#FFFFFF',
+                description: "L'ours polaire capitaine",
+                render: this.renderCaptainBarnacles
+            },
+            kwazii: {
+                name: "Kwazii",
+                color: '#FF8C00',
+                description: "Le chat pirate orange",
+                render: this.renderKwazii
             },
             ninjago: {
                 name: "Ninjago",
@@ -527,8 +641,11 @@ class Game {
                 case 'knuckles':
                     Game.prototype.renderKnuckles.call(this, ctx, tempPlayer);
                     break;
-                case 'octonaut':
-                    Game.prototype.renderOctonaut.call(this, ctx, tempPlayer);
+                case 'captain_barnacles':
+                    Game.prototype.renderCaptainBarnacles.call(this, ctx, tempPlayer);
+                    break;
+                case 'kwazii':
+                    Game.prototype.renderKwazii.call(this, ctx, tempPlayer);
                     break;
                 case 'ninjago':
                     Game.prototype.renderNinjago.call(this, ctx, tempPlayer);
@@ -581,32 +698,32 @@ class Game {
         const platformCount = 60; // Beaucoup plus de plateformes pour 2 minutes
         
         // Plateforme de départ
-        this.platforms.push(new Platform(0, this.height - 20, 200, 20));
+        this.platforms.push(new Platform(0, this.height - 30, 300, 30));
         
         // Générer un niveau long et varié selon la difficulté
         for (let i = 0; i < platformCount; i++) {
             const x = 250 + i * 100; // Espacement régulier
             const difficulty = levelInfo.difficulty;
             
-            // Variation de hauteur basée sur la difficulté
-            const heightVariation = 60 + Math.sin(i * 0.2) * 100 * difficulty;
+            // Variation de hauteur basée sur la difficulté (assurer visibilité)
+            const heightVariation = Math.max(80, 60 + Math.sin(i * 0.2) * 80 * difficulty);
             const y = this.height - heightVariation;
             const width = 100 + Math.random() * 100; // Largeurs variées
             
             // Créer des plateformes mobiles ou statiques
             if (Math.random() < 0.3) {
                 // Plateforme mobile verticale
-                this.platforms.push(new MovingPlatform(x, y, width, 20, 'vertical'));
+                this.platforms.push(new MovingPlatform(x, y, width, 30, 'vertical'));
             } else {
                 // Plateforme statique
-                this.platforms.push(new Platform(x, y, width, 20));
+                this.platforms.push(new Platform(x, y, width, 30));
             }
             
             // Ajouter des plateformes intermédiaires pour faciliter les sauts
             if (i < platformCount - 2 && Math.random() < 0.3) {
-                const midX = x + width/2 + (Math.random() - 0.5) * 80;
-                const midY = y + 50 + Math.random() * 30;
-                this.platforms.push(new Platform(midX, midY, 60, 15));
+                const midX = x + width/2 + (Math.random() - 0.5) * 120;
+                const midY = y + 75 + Math.random() * 45;
+                this.platforms.push(new Platform(midX, midY, 90, 22));
             }
             
             // Ajouter des ennemis selon la difficulté
@@ -631,7 +748,7 @@ class Game {
         }
         
         // Plateforme de fin
-        this.platforms.push(new Platform(this.worldWidth - 200, this.height - 20, 200, 20));
+        this.platforms.push(new Platform(this.worldWidth - 300, this.height - 30, 300, 30));
         
         // Créer le drapeau à la fin
         this.flag = new Flag(this.worldWidth - 150, this.height - 120);
@@ -758,7 +875,7 @@ class Game {
             spring.update();
             if (this.checkCollision(this.player, spring)) {
                 spring.activate();
-                this.player.velocityY = -this.player.jumpPower * 2; // Saut 2x plus puissant
+                this.player.velocityY = -this.player.jumpPower * 1.5; // Saut 1.5x plus puissant (réduit)
                 this.playSound('jump');
                 this.addParticles(spring.x, spring.y, '#FFD700');
             }
@@ -828,11 +945,37 @@ class Game {
         // Appliquer la transformation de la caméra
         this.ctx.translate(-this.camera.x, -this.camera.y);
         
-        // Dessiner le ciel (couvrir tout le monde)
+        // Dessiner le ciel selon le thème du niveau
+        const levelInfo = this.levelData[this.level];
         const gradient = this.ctx.createLinearGradient(0, 0, 0, this.height);
+        
+        if (levelInfo.theme === 'forest') {
+            gradient.addColorStop(0, '#87CEEB');
+            gradient.addColorStop(0.7, '#98FB98');
+            gradient.addColorStop(1, '#228B22');
+        } else if (levelInfo.theme === 'ice') {
+            gradient.addColorStop(0, '#B0E0E6');
+            gradient.addColorStop(0.7, '#F0F8FF');
+            gradient.addColorStop(1, '#E6F3FF');
+        } else if (levelInfo.theme === 'beach') {
+            gradient.addColorStop(0, '#87CEEB');
+            gradient.addColorStop(0.7, '#FFE4B5');
+            gradient.addColorStop(1, '#F4A460');
+        } else if (levelInfo.theme === 'fire') {
+            gradient.addColorStop(0, '#FF4500');
+            gradient.addColorStop(0.7, '#FF6347');
+            gradient.addColorStop(1, '#8B0000');
+        } else if (levelInfo.theme === 'water') {
+            gradient.addColorStop(0, '#191970');
+            gradient.addColorStop(0.7, '#000080');
+            gradient.addColorStop(1, '#4682B4');
+        } else {
+            // Thème par défaut
         gradient.addColorStop(0, '#87CEEB');
         gradient.addColorStop(0.7, '#98FB98');
         gradient.addColorStop(1, '#8B4513');
+        }
+        
         this.ctx.fillStyle = gradient;
         this.ctx.fillRect(0, 0, this.worldWidth, this.height);
         
@@ -944,7 +1087,8 @@ class Game {
         this.camera.y = 0;
         this.camera.targetX = 0;
         this.camera.targetY = 0;
-        // Redémarrer la musique
+        // Changer la musique selon le thème
+        this.createThemeMusic();
         this.startBackgroundMusic();
     }
     
@@ -1084,190 +1228,802 @@ Game.prototype.renderSonic = function(ctx, player) {
     const centerX = player.x + player.width / 2;
     const centerY = player.y + player.height / 2;
     
-    // Corps principal de Sonic (ovale)
-    ctx.fillStyle = '#00BFFF';
+    // Corps principal de Sonic (bleu cobalt plus foncé)
+    ctx.fillStyle = '#1E90FF';
     ctx.beginPath();
     ctx.ellipse(centerX, centerY, player.width/2, player.height/2, 0, 0, Math.PI * 2);
     ctx.fill();
     
-    // Ventre blanc
-    ctx.fillStyle = 'white';
+    // Ombre sur le corps
+    ctx.fillStyle = '#0066CC';
     ctx.beginPath();
-    ctx.ellipse(centerX, centerY + 3, player.width/2 - 4, player.height/2 - 6, 0, 0, Math.PI * 2);
+    ctx.ellipse(centerX - 2, centerY - 2, player.width/2 - 2, player.height/2 - 2, 0, 0, Math.PI * 2);
     ctx.fill();
     
-    // Yeux de Sonic
+    // Ventre blanc (plus petit et plus haut)
     ctx.fillStyle = 'white';
     ctx.beginPath();
-    ctx.arc(centerX - 6, centerY - 5, 6, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(centerX + 6, centerY - 5, 6, 0, Math.PI * 2);
+    ctx.ellipse(centerX, centerY + 5, player.width/2 - 6, player.height/2 - 8, 0, 0, Math.PI * 2);
     ctx.fill();
     
-    // Pupilles noires
+    // Yeux de Sonic (plus grands et ovales)
+    ctx.fillStyle = 'white';
+    ctx.beginPath();
+    ctx.ellipse(centerX - 8, centerY - 8, 9, 7, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.ellipse(centerX + 8, centerY - 8, 9, 7, 0, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Pupilles noires (plus grandes)
     ctx.fillStyle = 'black';
     ctx.beginPath();
-    ctx.arc(centerX - 6 + (player.direction * 2), centerY - 5, 3, 0, Math.PI * 2);
+    ctx.ellipse(centerX - 8 + (player.direction * 3), centerY - 8, 5, 4, 0, 0, Math.PI * 2);
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(centerX + 6 + (player.direction * 2), centerY - 5, 3, 0, Math.PI * 2);
+    ctx.ellipse(centerX + 8 + (player.direction * 3), centerY - 8, 5, 4, 0, 0, Math.PI * 2);
     ctx.fill();
     
-    // Oreilles
-    ctx.fillStyle = '#00BFFF';
+    // Reflets dans les yeux
+    ctx.fillStyle = 'white';
     ctx.beginPath();
-    ctx.arc(centerX - 8, centerY - 12, 4, 0, Math.PI * 2);
+    ctx.arc(centerX - 6 + (player.direction * 3), centerY - 10, 2, 0, Math.PI * 2);
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(centerX + 8, centerY - 12, 4, 0, Math.PI * 2);
+    ctx.arc(centerX + 10 + (player.direction * 3), centerY - 10, 2, 0, Math.PI * 2);
     ctx.fill();
+    
+    // Oreilles (plus petites et pointues)
+    ctx.fillStyle = '#1E90FF';
+    ctx.beginPath();
+    ctx.arc(centerX - 12, centerY - 18, 4, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(centerX + 12, centerY - 18, 4, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Intérieur des oreilles (rose)
+    ctx.fillStyle = '#FFB6C1';
+    ctx.beginPath();
+    ctx.arc(centerX - 12, centerY - 18, 2.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(centerX + 12, centerY - 18, 2.5, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Pics caractéristiques de Sonic (plus longs et pointus)
+    ctx.fillStyle = '#1E90FF';
+    ctx.beginPath();
+    ctx.moveTo(centerX - 18, centerY - 25);
+    ctx.lineTo(centerX - 10, centerY - 15);
+    ctx.lineTo(centerX - 14, centerY - 10);
+    ctx.closePath();
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.moveTo(centerX + 18, centerY - 25);
+    ctx.lineTo(centerX + 10, centerY - 15);
+    ctx.lineTo(centerX + 14, centerY - 10);
+    ctx.closePath();
+    ctx.fill();
+    
+    // Pic central (plus long)
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY - 22);
+    ctx.lineTo(centerX - 4, centerY - 12);
+    ctx.lineTo(centerX + 4, centerY - 12);
+    ctx.closePath();
+    ctx.fill();
+    
+    // Sourire caractéristique (plus large)
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(centerX, centerY + 8, 10, 0, Math.PI);
+    ctx.stroke();
+    
+    // Gants blancs (plus grands)
+    ctx.fillStyle = 'white';
+    ctx.fillRect(player.x - 3, player.y + player.height - 10, 10, 8);
+    ctx.fillRect(player.x + player.width - 7, player.y + player.height - 10, 10, 8);
+    
+    // Chaussures rouges (plus grandes et caractéristiques)
+    ctx.fillStyle = '#FF0000';
+    ctx.fillRect(player.x - 2, player.y + player.height - 5, 12, 5);
+    ctx.fillRect(player.x + player.width - 10, player.y + player.height - 5, 12, 5);
+    
+    // Détails des chaussures (bande blanche)
+    ctx.fillStyle = 'white';
+    ctx.fillRect(player.x + 1, player.y + player.height - 4, 8, 2);
+    ctx.fillRect(player.x + player.width - 9, player.y + player.height - 4, 8, 2);
+    
+    // Semelles des chaussures
+    ctx.fillStyle = '#8B0000';
+    ctx.fillRect(player.x - 2, player.y + player.height - 1, 12, 2);
+    ctx.fillRect(player.x + player.width - 10, player.y + player.height - 1, 12, 2);
 };
 
 Game.prototype.renderMario = function(ctx, player) {
     const centerX = player.x + player.width / 2;
     const centerY = player.y + player.height / 2;
     
-    // Corps de Mario
+    // Corps de Mario (plus arrondi)
     ctx.fillStyle = '#FF0000';
-    ctx.fillRect(player.x, player.y, player.width, player.height);
+    ctx.beginPath();
+    ctx.roundRect(player.x, player.y, player.width, player.height, 4);
+    ctx.fill();
     
-    // Salopette bleue
+    // Salopette bleue avec boutons
     ctx.fillStyle = '#0000FF';
-    ctx.fillRect(player.x + 5, player.y + 15, player.width - 10, player.height - 15);
+    ctx.beginPath();
+    ctx.roundRect(player.x + 5, player.y + 15, player.width - 10, player.height - 15, 3);
+    ctx.fill();
     
-    // Yeux
+    // Boutons de la salopette
+    ctx.fillStyle = '#FFD700';
+    ctx.beginPath();
+    ctx.arc(player.x + 8, player.y + 18, 2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 8, player.y + 25, 2, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Yeux (plus expressifs)
     ctx.fillStyle = 'white';
-    ctx.fillRect(player.x + 5, player.y + 5, 8, 8);
-    ctx.fillRect(player.x + 17, player.y + 5, 8, 8);
+    ctx.beginPath();
+    ctx.arc(player.x + 8, player.y + 8, 6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 22, player.y + 8, 6, 0, Math.PI * 2);
+    ctx.fill();
     
-    // Pupilles
+    // Pupilles avec reflets
     ctx.fillStyle = 'black';
-    ctx.fillRect(player.x + 7, player.y + 7, 4, 4);
-    ctx.fillRect(player.x + 19, player.y + 7, 4, 4);
+    ctx.beginPath();
+    ctx.arc(player.x + 8, player.y + 8, 3, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 22, player.y + 8, 3, 0, Math.PI * 2);
+    ctx.fill();
     
-    // Moustache
+    // Reflets dans les yeux
+    ctx.fillStyle = 'white';
+    ctx.beginPath();
+    ctx.arc(player.x + 7, player.y + 6, 1, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 21, player.y + 6, 1, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Moustache (plus détaillée)
     ctx.fillStyle = '#8B4513';
-    ctx.fillRect(player.x + 8, player.y + 15, 14, 3);
+    ctx.fillRect(player.x + 6, player.y + 14, 16, 4);
+    ctx.fillRect(player.x + 8, player.y + 12, 12, 2);
     
-    // Casquette
+    // Nez
+    ctx.fillStyle = '#FFB6C1';
+    ctx.beginPath();
+    ctx.arc(player.x + 15, player.y + 12, 3, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Casquette rouge avec M
     ctx.fillStyle = '#FF0000';
-    ctx.fillRect(player.x + 2, player.y, player.width - 4, 8);
+    ctx.beginPath();
+    ctx.roundRect(player.x + 2, player.y, player.width - 4, 10, 2);
+    ctx.fill();
+    
+    // Lettre M sur la casquette
+    ctx.fillStyle = 'white';
+    ctx.font = 'bold 8px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('M', centerX, player.y + 7);
+    
+    // Visière de la casquette
+    ctx.fillStyle = '#CC0000';
+    ctx.fillRect(player.x + 1, player.y + 8, player.width - 2, 2);
+    
+    // Bras
+    ctx.fillStyle = '#FFB6C1';
+    ctx.fillRect(player.x - 3, player.y + 10, 6, 12);
+    ctx.fillRect(player.x + player.width - 3, player.y + 10, 6, 12);
+    
+    // Gants blancs
+    ctx.fillStyle = 'white';
+    ctx.fillRect(player.x - 4, player.y + 20, 8, 6);
+    ctx.fillRect(player.x + player.width - 4, player.y + 20, 8, 6);
+    
+    // Jambes
+    ctx.fillStyle = '#0000FF';
+    ctx.fillRect(player.x + 3, player.y + player.height - 8, 8, 8);
+    ctx.fillRect(player.x + player.width - 11, player.y + player.height - 8, 8, 8);
+    
+    // Chaussures brunes
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(player.x + 2, player.y + player.height - 3, 10, 4);
+    ctx.fillRect(player.x + player.width - 12, player.y + player.height - 3, 10, 4);
 };
 
 Game.prototype.renderKnuckles = function(ctx, player) {
     const centerX = player.x + player.width / 2;
     const centerY = player.y + player.height / 2;
     
-    // Corps de Knuckles
+    // Corps de Knuckles (plus musclé)
     ctx.fillStyle = '#8B0000';
-    ctx.fillRect(player.x, player.y, player.width, player.height);
+    ctx.beginPath();
+    ctx.roundRect(player.x, player.y, player.width, player.height, 4);
+    ctx.fill();
     
-    // Ventre blanc
+    // Ventre blanc avec détail
     ctx.fillStyle = 'white';
-    ctx.fillRect(player.x + 5, player.y + 10, player.width - 10, player.height - 15);
+    ctx.beginPath();
+    ctx.roundRect(player.x + 5, player.y + 10, player.width - 10, player.height - 15, 3);
+    ctx.fill();
     
-    // Yeux
+    // Yeux (plus expressifs)
     ctx.fillStyle = 'white';
-    ctx.fillRect(player.x + 5, player.y + 5, 8, 8);
-    ctx.fillRect(player.x + 17, player.y + 5, 8, 8);
+    ctx.beginPath();
+    ctx.arc(player.x + 8, player.y + 8, 6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 22, player.y + 8, 6, 0, Math.PI * 2);
+    ctx.fill();
     
-    // Pupilles
+    // Pupilles avec reflets
     ctx.fillStyle = 'black';
-    ctx.fillRect(player.x + 7, player.y + 7, 4, 4);
-    ctx.fillRect(player.x + 19, player.y + 7, 4, 4);
+    ctx.beginPath();
+    ctx.arc(player.x + 8, player.y + 8, 3, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 22, player.y + 8, 3, 0, Math.PI * 2);
+    ctx.fill();
     
-    // Dreadlocks
+    // Reflets dans les yeux
+    ctx.fillStyle = 'white';
+    ctx.beginPath();
+    ctx.arc(player.x + 7, player.y + 6, 1, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 21, player.y + 6, 1, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Sourire
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(centerX, player.y + 15, 6, 0, Math.PI);
+    ctx.stroke();
+    
+    // Dreadlocks (plus détaillées)
+    ctx.fillStyle = '#8B0000';
+    for (let i = 0; i < 4; i++) {
+        const x = player.x + 4 + i * 6;
+        ctx.fillRect(x, player.y - 8, 3, 10);
+        ctx.fillRect(x + 1, player.y - 10, 1, 2);
+    }
+    
+    // Gants avec piques
+    ctx.fillStyle = 'white';
+    ctx.fillRect(player.x - 2, player.y + player.height - 8, 8, 6);
+    ctx.fillRect(player.x + player.width - 6, player.y + player.height - 8, 8, 6);
+    
+    // Piques sur les gants
     ctx.fillStyle = '#8B0000';
     for (let i = 0; i < 3; i++) {
-        ctx.fillRect(player.x + 5 + i * 8, player.y - 5, 4, 8);
+        ctx.beginPath();
+        ctx.moveTo(player.x + 1 + i * 2, player.y + player.height - 10);
+        ctx.lineTo(player.x + 2 + i * 2, player.y + player.height - 12);
+        ctx.lineTo(player.x + 3 + i * 2, player.y + player.height - 10);
+        ctx.closePath();
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.moveTo(player.x + player.width - 7 + i * 2, player.y + player.height - 10);
+        ctx.lineTo(player.x + player.width - 6 + i * 2, player.y + player.height - 12);
+        ctx.lineTo(player.x + player.width - 5 + i * 2, player.y + player.height - 10);
+        ctx.closePath();
+        ctx.fill();
     }
+    
+    // Chaussures rouges
+    ctx.fillStyle = '#FF0000';
+    ctx.fillRect(player.x - 1, player.y + player.height - 3, 10, 4);
+    ctx.fillRect(player.x + player.width - 9, player.y + player.height - 3, 10, 4);
+    
+    // Détails des chaussures
+    ctx.fillStyle = '#CC0000';
+    ctx.fillRect(player.x + 1, player.y + player.height - 2, 6, 2);
+    ctx.fillRect(player.x + player.width - 7, player.y + player.height - 2, 6, 2);
 };
 
-Game.prototype.renderOctonaut = function(ctx, player) {
+Game.prototype.renderCaptainBarnacles = function(ctx, player) {
     const centerX = player.x + player.width / 2;
     const centerY = player.y + player.height / 2;
     
-    // Corps de l'Octonaut
-    ctx.fillStyle = '#FF69B4';
-    ctx.fillRect(player.x, player.y, player.width, player.height);
+    // Corps de Captain Barnacles (ours polaire blanc)
+    ctx.fillStyle = '#FFFFFF';
+    ctx.beginPath();
+    ctx.roundRect(player.x, player.y, player.width, player.height, 6);
+    ctx.fill();
     
-    // Casque de plongée
-    ctx.fillStyle = '#87CEEB';
-    ctx.fillRect(player.x + 3, player.y + 3, player.width - 6, player.height - 6);
+    // Ombre sur le corps
+    ctx.fillStyle = '#F0F0F0';
+    ctx.beginPath();
+    ctx.roundRect(player.x + 2, player.y + 2, player.width - 4, player.height - 4, 4);
+    ctx.fill();
     
-    // Yeux dans le casque
+    // Uniforme bleu des Octonauts
+    ctx.fillStyle = '#0000FF';
+    ctx.beginPath();
+    ctx.roundRect(player.x + 4, player.y + 8, player.width - 8, player.height - 12, 3);
+    ctx.fill();
+    
+    // Yeux de l'ours polaire
     ctx.fillStyle = 'black';
-    ctx.fillRect(player.x + 8, player.y + 8, 6, 6);
-    ctx.fillRect(player.x + 16, player.y + 8, 6, 6);
+    ctx.beginPath();
+    ctx.arc(player.x + 8, player.y + 8, 3, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 22, player.y + 8, 3, 0, Math.PI * 2);
+    ctx.fill();
     
-    // Tentacules
-    ctx.fillStyle = '#FF69B4';
-    for (let i = 0; i < 4; i++) {
-        ctx.fillRect(player.x + 5 + i * 5, player.y + player.height - 5, 3, 8);
+    // Museau de l'ours
+    ctx.fillStyle = '#F0F0F0';
+    ctx.beginPath();
+    ctx.arc(centerX, player.y + 12, 4, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Nez noir
+    ctx.fillStyle = 'black';
+    ctx.beginPath();
+    ctx.arc(centerX, player.y + 12, 2, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Oreilles d'ours
+    ctx.fillStyle = '#FFFFFF';
+    ctx.beginPath();
+    ctx.arc(player.x + 6, player.y + 6, 4, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 24, player.y + 6, 4, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Intérieur des oreilles
+    ctx.fillStyle = '#F0F0F0';
+    ctx.beginPath();
+    ctx.arc(player.x + 6, player.y + 6, 2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 24, player.y + 6, 2, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Sourire
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(centerX, player.y + 16, 6, 0, Math.PI);
+    ctx.stroke();
+    
+    // Insigne de capitaine
+    ctx.fillStyle = '#FFD700';
+    ctx.fillRect(player.x + 8, player.y + 10, 6, 4);
+    
+    // Détails de l'uniforme
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(player.x + 6, player.y + 18, player.width - 12, 2);
+    
+    // Bras
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(player.x - 3, player.y + 10, 6, 12);
+    ctx.fillRect(player.x + player.width - 3, player.y + 10, 6, 12);
+    
+    // Gants bleus
+    ctx.fillStyle = '#0000FF';
+    ctx.fillRect(player.x - 4, player.y + 20, 8, 6);
+    ctx.fillRect(player.x + player.width - 4, player.y + 20, 8, 6);
+    
+    // Jambes
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(player.x + 6, player.y + player.height - 10, 6, 10);
+    ctx.fillRect(player.x + player.width - 12, player.y + player.height - 10, 6, 10);
+    
+    // Bottes bleues
+    ctx.fillStyle = '#0000FF';
+    ctx.fillRect(player.x + 4, player.y + player.height - 4, 10, 4);
+    ctx.fillRect(player.x + player.width - 14, player.y + player.height - 4, 10, 4);
+    
+    // Détails des bottes
+    ctx.fillStyle = '#FFD700';
+    ctx.fillRect(player.x + 6, player.y + player.height - 3, 2, 1);
+    ctx.fillRect(player.x + player.width - 8, player.y + player.height - 3, 2, 1);
+};
+
+Game.prototype.renderKwazii = function(ctx, player) {
+    const centerX = player.x + player.width / 2;
+    const centerY = player.y + player.height / 2;
+    
+    // Corps de Kwazii (chat orange)
+    ctx.fillStyle = '#FF8C00';
+    ctx.beginPath();
+    ctx.roundRect(player.x, player.y, player.width, player.height, 6);
+    ctx.fill();
+    
+    // Ombre sur le corps
+    ctx.fillStyle = '#FF7F00';
+    ctx.beginPath();
+    ctx.roundRect(player.x + 2, player.y + 2, player.width - 4, player.height - 4, 4);
+    ctx.fill();
+    
+    // Uniforme bleu des Octonauts
+    ctx.fillStyle = '#0000FF';
+    ctx.beginPath();
+    ctx.roundRect(player.x + 4, player.y + 8, player.width - 8, player.height - 12, 3);
+    ctx.fill();
+    
+    // Yeux de chat (plus expressifs)
+    ctx.fillStyle = 'white';
+    ctx.beginPath();
+    ctx.arc(player.x + 8, player.y + 8, 6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 22, player.y + 8, 6, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Pupilles de chat (verticales)
+    ctx.fillStyle = 'black';
+    ctx.fillRect(player.x + 6, player.y + 6, 4, 8);
+    ctx.fillRect(player.x + 20, player.y + 6, 4, 8);
+    
+    // Reflets dans les yeux
+    ctx.fillStyle = 'white';
+    ctx.fillRect(player.x + 7, player.y + 7, 2, 2);
+    ctx.fillRect(player.x + 21, player.y + 7, 2, 2);
+    
+    // Museau de chat
+    ctx.fillStyle = '#FF8C00';
+    ctx.beginPath();
+    ctx.arc(centerX, player.y + 12, 3, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Nez rose
+    ctx.fillStyle = '#FFB6C1';
+    ctx.beginPath();
+    ctx.arc(centerX, player.y + 12, 1.5, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Oreilles de chat
+    ctx.fillStyle = '#FF8C00';
+    ctx.beginPath();
+    ctx.moveTo(player.x + 6, player.y + 4);
+    ctx.lineTo(player.x + 4, player.y + 8);
+    ctx.lineTo(player.x + 8, player.y + 8);
+    ctx.closePath();
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.moveTo(player.x + 24, player.y + 4);
+    ctx.lineTo(player.x + 22, player.y + 8);
+    ctx.lineTo(player.x + 26, player.y + 8);
+    ctx.closePath();
+    ctx.fill();
+    
+    // Intérieur des oreilles
+    ctx.fillStyle = '#FFB6C1';
+    ctx.beginPath();
+    ctx.moveTo(player.x + 6, player.y + 5);
+    ctx.lineTo(player.x + 5, player.y + 7);
+    ctx.lineTo(player.x + 7, player.y + 7);
+    ctx.closePath();
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.moveTo(player.x + 24, player.y + 5);
+    ctx.lineTo(player.x + 23, player.y + 7);
+    ctx.lineTo(player.x + 25, player.y + 7);
+    ctx.closePath();
+    ctx.fill();
+    
+    // Sourire de chat
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(centerX, player.y + 16, 6, 0, Math.PI);
+    ctx.stroke();
+    
+    // Moustaches de chat
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 1;
+    for (let i = 0; i < 3; i++) {
+        ctx.beginPath();
+        ctx.moveTo(player.x + 4 + i * 2, player.y + 14);
+        ctx.lineTo(player.x + 2 + i * 2, player.y + 14);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(player.x + 20 + i * 2, player.y + 14);
+        ctx.lineTo(player.x + 22 + i * 2, player.y + 14);
+        ctx.stroke();
     }
+    
+    // Insigne de lieutenant
+    ctx.fillStyle = '#FFD700';
+    ctx.fillRect(player.x + 8, player.y + 10, 6, 4);
+    
+    // Détails de l'uniforme
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(player.x + 6, player.y + 18, player.width - 12, 2);
+    
+    // Bras
+    ctx.fillStyle = '#FF8C00';
+    ctx.fillRect(player.x - 3, player.y + 10, 6, 12);
+    ctx.fillRect(player.x + player.width - 3, player.y + 10, 6, 12);
+    
+    // Gants bleus
+    ctx.fillStyle = '#0000FF';
+    ctx.fillRect(player.x - 4, player.y + 20, 8, 6);
+    ctx.fillRect(player.x + player.width - 4, player.y + 20, 8, 6);
+    
+    // Jambes
+    ctx.fillStyle = '#FF8C00';
+    ctx.fillRect(player.x + 6, player.y + player.height - 10, 6, 10);
+    ctx.fillRect(player.x + player.width - 12, player.y + player.height - 10, 6, 10);
+    
+    // Bottes bleues
+    ctx.fillStyle = '#0000FF';
+    ctx.fillRect(player.x + 4, player.y + player.height - 4, 10, 4);
+    ctx.fillRect(player.x + player.width - 14, player.y + player.height - 4, 10, 4);
+    
+    // Détails des bottes
+    ctx.fillStyle = '#FFD700';
+    ctx.fillRect(player.x + 6, player.y + player.height - 3, 2, 1);
+    ctx.fillRect(player.x + player.width - 8, player.y + player.height - 3, 2, 1);
 };
 
 Game.prototype.renderNinjago = function(ctx, player) {
     const centerX = player.x + player.width / 2;
     const centerY = player.y + player.height / 2;
     
-    // Corps du ninja
+    // Corps du ninja vert (Lloyd Garmadon)
     ctx.fillStyle = '#32CD32';
-    ctx.fillRect(player.x, player.y, player.width, player.height);
+    ctx.beginPath();
+    ctx.roundRect(player.x, player.y, player.width, player.height, 4);
+    ctx.fill();
     
-    // Masque
+    // Ombre sur le corps
     ctx.fillStyle = '#228B22';
-    ctx.fillRect(player.x + 5, player.y + 5, player.width - 10, 12);
+    ctx.beginPath();
+    ctx.roundRect(player.x + 2, player.y + 2, player.width - 4, player.height - 4, 3);
+    ctx.fill();
     
-    // Yeux
-    ctx.fillStyle = 'white';
-    ctx.fillRect(player.x + 8, player.y + 8, 6, 4);
-    ctx.fillRect(player.x + 16, player.y + 8, 6, 4);
+    // Capuche de ninja (plus détaillée)
+    ctx.fillStyle = '#228B22';
+    ctx.beginPath();
+    ctx.roundRect(player.x + 3, player.y + 3, player.width - 6, 18, 2);
+    ctx.fill();
     
-    // Pupilles
+    // Yeux brillants (caractéristiques de Lloyd)
+    ctx.fillStyle = '#00FF00';
+    ctx.beginPath();
+    ctx.arc(player.x + 10, player.y + 10, 7, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 20, player.y + 10, 7, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Pupilles avec reflets
     ctx.fillStyle = 'black';
-    ctx.fillRect(player.x + 9, player.y + 9, 4, 2);
-    ctx.fillRect(player.x + 17, player.y + 9, 4, 2);
+    ctx.beginPath();
+    ctx.arc(player.x + 10, player.y + 10, 4, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 20, player.y + 10, 4, 0, Math.PI * 2);
+    ctx.fill();
     
-    // Ceinture
+    // Reflets brillants dans les yeux
+    ctx.fillStyle = 'white';
+    ctx.beginPath();
+    ctx.arc(player.x + 9, player.y + 8, 2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 19, player.y + 8, 2, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Sourire sous le masque
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(centerX, player.y + 18, 6, 0, Math.PI);
+    ctx.stroke();
+    
+    // Ceinture de ninja avec détails dorés
     ctx.fillStyle = '#8B4513';
-    ctx.fillRect(player.x + 5, player.y + 15, player.width - 10, 3);
+    ctx.fillRect(player.x + 4, player.y + 18, player.width - 8, 5);
+    
+    // Boucle de ceinture dorée
+    ctx.fillStyle = '#FFD700';
+    ctx.fillRect(player.x + 12, player.y + 19, 6, 3);
+    
+    // Épée de ninja (à la ceinture)
+    ctx.fillStyle = '#C0C0C0';
+    ctx.fillRect(player.x + 8, player.y + 20, 2, 10);
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(player.x + 7, player.y + 30, 4, 3);
+    
+    // Bras musclés
+    ctx.fillStyle = '#32CD32';
+    ctx.fillRect(player.x - 4, player.y + 8, 8, 14);
+    ctx.fillRect(player.x + player.width - 4, player.y + 8, 8, 14);
+    
+    // Gants de ninja noirs
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(player.x - 5, player.y + 20, 10, 6);
+    ctx.fillRect(player.x + player.width - 5, player.y + 20, 10, 6);
+    
+    // Détails des gants (lignes dorées)
+    ctx.strokeStyle = '#FFD700';
+    ctx.lineWidth = 1;
+    for (let i = 0; i < 3; i++) {
+        ctx.beginPath();
+        ctx.moveTo(player.x - 3, player.y + 22 + i * 2);
+        ctx.lineTo(player.x + 3, player.y + 22 + i * 2);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(player.x + player.width - 3, player.y + 22 + i * 2);
+        ctx.lineTo(player.x + player.width + 3, player.y + 22 + i * 2);
+        ctx.stroke();
+    }
+    
+    // Jambes
+    ctx.fillStyle = '#32CD32';
+    ctx.fillRect(player.x + 4, player.y + player.height - 12, 8, 12);
+    ctx.fillRect(player.x + player.width - 12, player.y + player.height - 12, 8, 12);
+    
+    // Chaussures de ninja noires
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(player.x + 2, player.y + player.height - 5, 12, 5);
+    ctx.fillRect(player.x + player.width - 14, player.y + player.height - 5, 12, 5);
+    
+    // Détails des chaussures (lignes dorées)
+    ctx.strokeStyle = '#FFD700';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(player.x + 4, player.y + player.height - 3);
+    ctx.lineTo(player.x + 8, player.y + player.height - 3);
+    ctx.stroke();
+    
+    ctx.beginPath();
+    ctx.moveTo(player.x + player.width - 8, player.y + player.height - 3);
+    ctx.lineTo(player.x + player.width - 4, player.y + player.height - 3);
+    ctx.stroke();
+    
+    // Énergie verte (caractéristique de Lloyd)
+    ctx.fillStyle = '#00FF00';
+    ctx.globalAlpha = 0.6;
+    for (let i = 0; i < 3; i++) {
+        const angle = (player.animation * 2 + i * 2) % (Math.PI * 2);
+        const radius = 25;
+        const px = centerX + Math.cos(angle) * radius;
+        const py = centerY + Math.sin(angle) * radius;
+        ctx.beginPath();
+        ctx.arc(px, py, 2, 0, Math.PI * 2);
+        ctx.fill();
+    }
+    ctx.globalAlpha = 1;
 };
 
 Game.prototype.renderSpongebob = function(ctx, player) {
     const centerX = player.x + player.width / 2;
     const centerY = player.y + player.height / 2;
     
-    // Corps de Bob l'éponge (carré)
+    // Corps de Bob l'éponge (carré avec texture d'éponge)
     ctx.fillStyle = '#FFFF00';
     ctx.fillRect(player.x, player.y, player.width, player.height);
     
-    // Trous d'éponge
+    // Bordure de l'éponge
+    ctx.strokeStyle = '#E6E600';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(player.x, player.y, player.width, player.height);
+    
+    // Trous d'éponge (plus nombreux et variés)
     ctx.fillStyle = '#F0E68C';
-    for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 3; j++) {
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            const size = 1.5 + Math.random() * 1;
             ctx.beginPath();
-            ctx.arc(player.x + 8 + i * 8, player.y + 8 + j * 8, 2, 0, Math.PI * 2);
+            ctx.arc(player.x + 6 + i * 6, player.y + 6 + j * 6, size, 0, Math.PI * 2);
             ctx.fill();
         }
     }
     
-    // Yeux
+    // Yeux (plus expressifs et ronds)
     ctx.fillStyle = 'white';
-    ctx.fillRect(player.x + 5, player.y + 5, 8, 8);
-    ctx.fillRect(player.x + 17, player.y + 5, 8, 8);
+    ctx.beginPath();
+    ctx.arc(player.x + 8, player.y + 8, 7, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 22, player.y + 8, 7, 0, Math.PI * 2);
+    ctx.fill();
     
-    // Pupilles
+    // Pupilles (plus grandes)
     ctx.fillStyle = 'black';
-    ctx.fillRect(player.x + 7, player.y + 7, 4, 4);
-    ctx.fillRect(player.x + 19, player.y + 7, 4, 4);
+    ctx.beginPath();
+    ctx.arc(player.x + 8, player.y + 8, 4, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 22, player.y + 8, 4, 0, Math.PI * 2);
+    ctx.fill();
     
-    // Sourire
+    // Reflets dans les yeux
+    ctx.fillStyle = 'white';
+    ctx.beginPath();
+    ctx.arc(player.x + 7, player.y + 6, 1.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 21, player.y + 6, 1.5, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Cils
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 2;
+    for (let i = 0; i < 3; i++) {
     ctx.beginPath();
-    ctx.arc(centerX, player.y + 20, 8, 0, Math.PI);
+        ctx.moveTo(player.x + 5 + i * 2, player.y + 2);
+        ctx.lineTo(player.x + 6 + i * 2, player.y - 2);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(player.x + 19 + i * 2, player.y + 2);
+        ctx.lineTo(player.x + 20 + i * 2, player.y - 2);
+        ctx.stroke();
+    }
+    
+    // Nez
+    ctx.fillStyle = '#FFB6C1';
+    ctx.beginPath();
+    ctx.arc(centerX, player.y + 12, 2, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Sourire (plus expressif)
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(centerX, player.y + 18, 10, 0, Math.PI);
+    ctx.stroke();
+    
+    // Dents
+    ctx.fillStyle = 'white';
+    for (let i = 0; i < 4; i++) {
+        ctx.fillRect(centerX - 6 + i * 3, player.y + 18, 2, 4);
+    }
+    
+    // Chemise blanche
+    ctx.fillStyle = 'white';
+    ctx.fillRect(player.x + 2, player.y + 22, player.width - 4, 8);
+    
+    // Cravate rouge
+    ctx.fillStyle = '#FF0000';
+    ctx.fillRect(centerX - 1, player.y + 22, 2, 8);
+    
+    // Pantalon brun
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(player.x + 3, player.y + player.height - 6, player.width - 6, 6);
+    
+    // Chaussures noires
+    ctx.fillStyle = 'black';
+    ctx.fillRect(player.x + 2, player.y + player.height - 3, 8, 3);
+    ctx.fillRect(player.x + player.width - 10, player.y + player.height - 3, 8, 3);
+    
+    // Lacets
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(player.x + 4, player.y + player.height - 2);
+    ctx.lineTo(player.x + 6, player.y + player.height - 1);
+    ctx.stroke();
+    
+    ctx.beginPath();
+    ctx.moveTo(player.x + player.width - 8, player.y + player.height - 2);
+    ctx.lineTo(player.x + player.width - 6, player.y + player.height - 1);
     ctx.stroke();
 };
 
@@ -1275,36 +2031,151 @@ Game.prototype.renderBlippi = function(ctx, player) {
     const centerX = player.x + player.width / 2;
     const centerY = player.y + player.height / 2;
     
-    // Corps de Blippi
+    // Corps de Blippi (orange vif)
     ctx.fillStyle = '#FF8C00';
-    ctx.fillRect(player.x, player.y, player.width, player.height);
+    ctx.beginPath();
+    ctx.roundRect(player.x, player.y, player.width, player.height, 4);
+    ctx.fill();
     
-    // Chemise bleue
+    // Ombre sur le corps
+    ctx.fillStyle = '#FF7F00';
+    ctx.beginPath();
+    ctx.roundRect(player.x + 2, player.y + 2, player.width - 4, player.height - 4, 3);
+    ctx.fill();
+    
+    // Chemise bleue (plus large)
     ctx.fillStyle = '#0000FF';
-    ctx.fillRect(player.x + 5, player.y + 10, player.width - 10, player.height - 15);
+    ctx.beginPath();
+    ctx.roundRect(player.x + 3, player.y + 8, player.width - 6, player.height - 12, 3);
+    ctx.fill();
     
-    // Yeux
+    // Bretelles orange (caractéristiques de Blippi)
+    ctx.fillStyle = '#FF8C00';
+    ctx.fillRect(player.x + 5, player.y + 10, player.width - 10, 3);
+    ctx.fillRect(player.x + 5, player.y + 15, player.width - 10, 3);
+    
+    // Boutons de la chemise
+    ctx.fillStyle = '#FFD700';
+    for (let i = 0; i < 3; i++) {
+        ctx.beginPath();
+        ctx.arc(player.x + 8, player.y + 12 + i * 6, 1.5, 0, Math.PI * 2);
+        ctx.fill();
+    }
+    
+    // Yeux (plus expressifs et ronds)
     ctx.fillStyle = 'white';
-    ctx.fillRect(player.x + 5, player.y + 5, 8, 8);
-    ctx.fillRect(player.x + 17, player.y + 5, 8, 8);
+    ctx.beginPath();
+    ctx.arc(player.x + 8, player.y + 8, 8, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 22, player.y + 8, 8, 0, Math.PI * 2);
+    ctx.fill();
     
-    // Pupilles
+    // Pupilles avec reflets
     ctx.fillStyle = 'black';
-    ctx.fillRect(player.x + 7, player.y + 7, 4, 4);
-    ctx.fillRect(player.x + 19, player.y + 7, 4, 4);
+    ctx.beginPath();
+    ctx.arc(player.x + 8, player.y + 8, 5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 22, player.y + 8, 5, 0, Math.PI * 2);
+    ctx.fill();
     
-    // Lunettes
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 2;
-    ctx.strokeRect(player.x + 4, player.y + 4, 10, 10);
-    ctx.strokeRect(player.x + 16, player.y + 4, 10, 10);
+    // Reflets dans les yeux
+    ctx.fillStyle = 'white';
+    ctx.beginPath();
+    ctx.arc(player.x + 7, player.y + 6, 2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(player.x + 21, player.y + 6, 2, 0, Math.PI * 2);
+    ctx.fill();
     
-    // Sourire
+    // Lunettes (plus grandes et rondes)
     ctx.strokeStyle = 'black';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.arc(player.x + 8, player.y + 8, 10, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(player.x + 22, player.y + 8, 10, 0, Math.PI * 2);
+    ctx.stroke();
+    
+    // Pont des lunettes
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(player.x + 18, player.y + 8);
+    ctx.lineTo(player.x + 20, player.y + 8);
+    ctx.stroke();
+    
+    // Branches des lunettes
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(player.x + 2, player.y + 8);
+    ctx.lineTo(player.x - 2, player.y + 8);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(player.x + 28, player.y + 8);
+    ctx.lineTo(player.x + 32, player.y + 8);
+    ctx.stroke();
+    
+    // Sourire (très large et expressif)
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.arc(centerX, player.y + 22, 12, 0, Math.PI);
+    ctx.stroke();
+    
+    // Dents (plus nombreuses)
+    ctx.fillStyle = 'white';
+    for (let i = 0; i < 6; i++) {
+        ctx.fillRect(centerX - 9 + i * 3, player.y + 22, 2, 5);
+    }
+    
+    // Bras
+    ctx.fillStyle = '#FF8C00';
+    ctx.fillRect(player.x - 3, player.y + 10, 6, 12);
+    ctx.fillRect(player.x + player.width - 3, player.y + 10, 6, 12);
+    
+    // Gants orange (caractéristiques)
+    ctx.fillStyle = '#FF8C00';
+    ctx.fillRect(player.x - 4, player.y + 20, 8, 6);
+    ctx.fillRect(player.x + player.width - 4, player.y + 20, 8, 6);
+    
+    // Jambes
+    ctx.fillStyle = '#0000FF';
+    ctx.fillRect(player.x + 4, player.y + player.height - 10, 8, 10);
+    ctx.fillRect(player.x + player.width - 12, player.y + player.height - 10, 8, 10);
+    
+    // Chaussures noires (caractéristiques de Blippi)
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(player.x + 2, player.y + player.height - 4, 12, 4);
+    ctx.fillRect(player.x + player.width - 14, player.y + player.height - 4, 12, 4);
+    
+    // Lacets blancs
+    ctx.strokeStyle = 'white';
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.arc(centerX, player.y + 20, 8, 0, Math.PI);
+    ctx.moveTo(player.x + 4, player.y + player.height - 2);
+    ctx.lineTo(player.x + 6, player.y + player.height - 1);
     ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(player.x + player.width - 8, player.y + player.height - 2);
+    ctx.lineTo(player.x + player.width - 6, player.y + player.height - 1);
+    ctx.stroke();
+    
+    // Chaussettes blanches
+    ctx.fillStyle = 'white';
+    ctx.fillRect(player.x + 3, player.y + player.height - 8, 10, 4);
+    ctx.fillRect(player.x + player.width - 13, player.y + player.height - 8, 10, 4);
+    
+    // Casquette orange (caractéristique de Blippi)
+    ctx.fillStyle = '#FF8C00';
+    ctx.fillRect(player.x + 2, player.y - 5, player.width - 4, 8);
+    
+    // Visière de la casquette
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(player.x + 1, player.y + 1, player.width - 2, 2);
 };
 
 // Classe du joueur (Sonic)
@@ -1312,12 +2183,12 @@ class Player {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.width = 30;
-        this.height = 30;
+        this.width = 45; // Plus grand pour la nouvelle résolution
+        this.height = 45;
         this.velocityX = 0;
         this.velocityY = 0;
-        this.speed = 6; // Plus rapide comme Sonic
-        this.jumpPower = 18; // Saut plus puissant
+        this.speed = 8; // Plus rapide pour la nouvelle résolution
+        this.jumpPower = 22; // Saut plus puissant pour la nouvelle résolution
         this.onGround = false;
         this.color = '#00BFFF'; // Bleu Sonic
         this.direction = 1; // 1 = droite, -1 = gauche
@@ -1553,17 +2424,40 @@ class Platform {
     }
     
     render(ctx) {
+        // Obtenir les couleurs du thème actuel
+        const levelInfo = window.gameInstance ? window.gameInstance.levelData[window.gameInstance.level] : null;
+        let platformColor = this.color;
+        let borderColor = '#654321';
+        let textureColor = '#A0522D';
+        
+        if (levelInfo) {
+            platformColor = levelInfo.platformColor;
+            if (levelInfo.theme === 'ice') {
+                borderColor = '#B0C4DE';
+                textureColor = '#E0E0E0';
+            } else if (levelInfo.theme === 'beach') {
+                borderColor = '#D2B48C';
+                textureColor = '#F5DEB3';
+            } else if (levelInfo.theme === 'fire') {
+                borderColor = '#8B0000';
+                textureColor = '#CD853F';
+            } else if (levelInfo.theme === 'water') {
+                borderColor = '#2F4F4F';
+                textureColor = '#5F9EA0';
+            }
+        }
+        
         // Plateforme principale
-        ctx.fillStyle = this.color;
+        ctx.fillStyle = platformColor;
         ctx.fillRect(this.x, this.y, this.width, this.height);
         
         // Bordure
-        ctx.strokeStyle = '#654321';
+        ctx.strokeStyle = borderColor;
         ctx.lineWidth = 2;
         ctx.strokeRect(this.x, this.y, this.width, this.height);
         
         // Texture
-        ctx.fillStyle = '#A0522D';
+        ctx.fillStyle = textureColor;
         for (let i = 0; i < this.width; i += 20) {
             ctx.fillRect(this.x + i, this.y, 2, this.height);
         }
@@ -1622,9 +2516,9 @@ class Enemy {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.width = 25;
-        this.height = 25;
-        this.velocityX = -1;
+        this.width = 38;
+        this.height = 38;
+        this.velocityX = -1.5;
         this.velocityY = 0;
         this.color = '#8B0000';
     }
@@ -1677,8 +2571,8 @@ class Collectible {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.width = 20;
-        this.height = 20;
+        this.width = 30;
+        this.height = 30;
         this.color = '#FFD700';
         this.animation = 0;
     }
@@ -2143,3 +3037,6 @@ window.addEventListener('load', () => {
         window.gameInstance.setupCharacterPreviews();
     }, 100);
 });
+
+
+
